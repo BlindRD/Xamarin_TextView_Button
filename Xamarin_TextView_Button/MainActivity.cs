@@ -8,23 +8,29 @@ using Android.OS;
 
 namespace Xamarin_TextView_Button
 {
-    [Activity(Label = "Xamarin_TextView_Button", MainLauncher = true, Icon = "@drawable/icon")]
+    [Activity(Label = "Android.Xamarin | Часть 2 — TextView и Button (Hello world)", MainLauncher = true, Icon = "@drawable/icon")]
     public class MainActivity : Activity
     {
-        int count = 1;
+
+        TextView myTxt;
 
         protected override void OnCreate(Bundle bundle)
         {
             base.OnCreate(bundle);
 
             // Set our view from the "main" layout resource
-            SetContentView(Resource.Layout.Main);
+            SetContentView(Resource.Layout.rarimardLayout);
 
-            // Get our button from the layout resource,
-            // and attach an event to it
-            Button button = FindViewById<Button>(Resource.Id.MyButton);
+            Button myButton = FindViewById<Button>(Resource.Id.button1);
+            myTxt = FindViewById<TextView>(Resource.Id.textView1);
 
-            button.Click += delegate { button.Text = string.Format("{0} clicks!", count++); };
+            myButton.Click += helloWorld;
+
+        }
+
+        private void helloWorld(object sender, EventArgs e)
+        {
+            myTxt.Text = "Hello World!";
         }
     }
 }
